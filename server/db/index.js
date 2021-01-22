@@ -1,12 +1,15 @@
+require('dotenv').config();
 const mysql = require('mysql');
 
+
+// creating mysql connection config
 const pool = mysql.createPool({
     connectionLimit: 10,
-    password: 'admin',
-    user: 'root',
-    database: 'shop',
-    host:'localhost',
-    port:'3306'
+    password: process.env.DB_PASS,
+    user: process.env.DB_USER,
+    database: process.env.MYSQL_DB,
+    host:process.env.DB_HOST,
+    port:process.env.DB_PORT
 });
 
 let itemsdb = {};
